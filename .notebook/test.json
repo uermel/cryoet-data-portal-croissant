@@ -1,0 +1,761 @@
+{
+    "@context": {
+        "@language": "en",
+        "@vocab": "https://schema.org/",
+        "citeAs": "cr:citeAs",
+        "column": "cr:column",
+        "conformsTo": "dct:conformsTo",
+        "cr": "http://mlcommons.org/croissant/",
+        "rai": "http://mlcommons.org/croissant/RAI/",
+        "data": {
+            "@id": "cr:data",
+            "@type": "@json"
+        },
+        "dataType": {
+            "@id": "cr:dataType",
+            "@type": "@vocab"
+        },
+        "dct": "http://purl.org/dc/terms/",
+        "examples": {
+            "@id": "cr:examples",
+            "@type": "@json"
+        },
+        "extract": "cr:extract",
+        "field": "cr:field",
+        "fileProperty": "cr:fileProperty",
+        "fileObject": "cr:fileObject",
+        "fileSet": "cr:fileSet",
+        "format": "cr:format",
+        "includes": "cr:includes",
+        "isLiveDataset": "cr:isLiveDataset",
+        "jsonPath": "cr:jsonPath",
+        "key": "cr:key",
+        "md5": "cr:md5",
+        "parentField": "cr:parentField",
+        "path": "cr:path",
+        "recordSet": "cr:recordSet",
+        "references": "cr:references",
+        "regex": "cr:regex",
+        "repeated": "cr:repeated",
+        "replace": "cr:replace",
+        "sc": "https://schema.org/",
+        "separator": "cr:separator",
+        "source": "cr:source",
+        "subField": "cr:subField",
+        "transform": "cr:transform"
+    },
+    "@type": "sc:Dataset",
+    "name": "S. pombe cells with defocus",
+    "description": "Defocus cryo-electron tomography of S. pombe cryo-FIB lamellae with comprehensive annotations of structures and macromolecules",
+    "conformsTo": "http://mlcommons.org/croissant/1.0",
+    "creator": [
+        {
+            "@type": "sc:Person",
+            "name": "Sara Goetz",
+            "url": "https://orcid.org/0000-0002-9903-3667"
+        },
+        {
+            "@type": "sc:Person",
+            "name": "Julia Mahamid",
+            "url": "https://orcid.org/0000-0001-6968-041X"
+        },
+        {
+            "@type": "sc:Person",
+            "name": "Irene de Teresa Trueba",
+            "url": "https://orcid.org/0000-0002-4691-9501"
+        },
+        {
+            "@type": "sc:Person",
+            "name": "Alexander Mattausch",
+            "url": "https://orcid.org/0000-0003-0901-8701"
+        },
+        {
+            "@type": "sc:Person",
+            "name": "Frosina Stojanovska",
+            "url": "https://orcid.org/0000-0002-4327-1068"
+        },
+        {
+            "@type": "sc:Person",
+            "name": "Christian Eugen Zimmerli",
+            "url": "https://orcid.org/0000-0003-4388-1349"
+        },
+        {
+            "@type": "sc:Person",
+            "name": "Mauricio Toro-Nahuelpan",
+            "url": "https://orcid.org/0000-0001-5333-3640"
+        },
+        {
+            "@type": "sc:Person",
+            "name": "Dorothy W. C. Cheng"
+        },
+        {
+            "@type": "sc:Person",
+            "name": "Fergus Tollervey"
+        },
+        {
+            "@type": "sc:Person",
+            "name": "Constantin Pape",
+            "url": "https://orcid.org/0000-0001-6562-7187"
+        },
+        {
+            "@type": "sc:Person",
+            "name": "Martin Beck",
+            "url": "https://orcid.org/0000-0002-7397-1321"
+        },
+        {
+            "@type": "sc:Person",
+            "name": "Alba Diz-Munoz",
+            "url": "https://orcid.org/0000-0001-6864-8901"
+        },
+        {
+            "@type": "sc:Person",
+            "name": "Anna Kreshuk",
+            "url": "https://orcid.org/0000-0003-1334-6388"
+        },
+        {
+            "@type": "sc:Person",
+            "name": "Judith B. Zaugg",
+            "url": "https://orcid.org/0000-0001-8324-4040"
+        }
+    ],
+    "dateCreated": "2023-04-01 00:00:00",
+    "dateModified": "2023-06-01 00:00:00",
+    "datePublished": "2023-06-01 00:00:00",
+    "license": "https://creativecommons.org/public-domain/cc0/",
+    "rai:dataCollectionType": [
+        "Physical data collection",
+        "Direct measurement",
+        "Experiments",
+        "Others"
+    ],
+    "url": "https://cryoetdataportal.czscience.com/datasets/10000",
+    "distribution": [
+        {
+            "@type": "cr:FileObject",
+            "@id": "10000/TS_028/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_028.zarr",
+            "name": "10000/TS_028/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_028.zarr",
+            "description": "Tomogram 623 in OME-Zarr format",
+            "containedIn": {
+                "@id": "10000-tomograms-ome-zarr"
+            },
+            "contentSize": "833260872.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_028/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_028.zarr",
+            "encodingFormat": "image/OME-Zarr",
+            "sameAs": "10000/TS_028/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_028.mrc"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "10000/TS_028/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_028.mrc",
+            "name": "10000/TS_028/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_028.mrc",
+            "description": "Tomogram 623 in MRC format",
+            "containedIn": {
+                "@id": "10000-tomograms-mrc"
+            },
+            "contentSize": "890881024.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_028/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_028.mrc",
+            "encodingFormat": "image/MRC",
+            "sameAs": "10000/TS_028/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_028.zarr"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "10000/TS_030/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_030.zarr",
+            "name": "10000/TS_030/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_030.zarr",
+            "description": "Tomogram 625 in OME-Zarr format",
+            "containedIn": {
+                "@id": "10000-tomograms-ome-zarr"
+            },
+            "contentSize": "829657466.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_030/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_030.zarr",
+            "encodingFormat": "image/OME-Zarr",
+            "sameAs": "10000/TS_030/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_030.mrc"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "10000/TS_030/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_030.mrc",
+            "name": "10000/TS_030/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_030.mrc",
+            "description": "Tomogram 625 in MRC format",
+            "containedIn": {
+                "@id": "10000-tomograms-mrc"
+            },
+            "contentSize": "890881024.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_030/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_030.mrc",
+            "encodingFormat": "image/MRC",
+            "sameAs": "10000/TS_030/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_030.zarr"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "10000/TS_041/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_041.zarr",
+            "name": "10000/TS_041/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_041.zarr",
+            "description": "Tomogram 628 in OME-Zarr format",
+            "containedIn": {
+                "@id": "10000-tomograms-ome-zarr"
+            },
+            "contentSize": "820165886.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_041/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_041.zarr",
+            "encodingFormat": "image/OME-Zarr",
+            "sameAs": "10000/TS_041/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_041.mrc"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "10000/TS_041/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_041.mrc",
+            "name": "10000/TS_041/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_041.mrc",
+            "description": "Tomogram 628 in MRC format",
+            "containedIn": {
+                "@id": "10000-tomograms-mrc"
+            },
+            "contentSize": "890881024.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_041/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_041.mrc",
+            "encodingFormat": "image/MRC",
+            "sameAs": "10000/TS_041/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_041.zarr"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "10000/TS_026/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_026.zarr",
+            "name": "10000/TS_026/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_026.zarr",
+            "description": "Tomogram 621 in OME-Zarr format",
+            "containedIn": {
+                "@id": "10000-tomograms-ome-zarr"
+            },
+            "contentSize": "1662426373.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_026/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_026.zarr",
+            "encodingFormat": "image/OME-Zarr",
+            "sameAs": "10000/TS_026/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_026.mrc"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "10000/TS_026/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_026.mrc",
+            "name": "10000/TS_026/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_026.mrc",
+            "description": "Tomogram 621 in MRC format",
+            "containedIn": {
+                "@id": "10000-tomograms-mrc"
+            },
+            "contentSize": "1781761024.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_026/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_026.mrc",
+            "encodingFormat": "image/MRC",
+            "sameAs": "10000/TS_026/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_026.zarr"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "10000/TS_043/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_043.zarr",
+            "name": "10000/TS_043/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_043.zarr",
+            "description": "Tomogram 629 in OME-Zarr format",
+            "containedIn": {
+                "@id": "10000-tomograms-ome-zarr"
+            },
+            "contentSize": "830154641.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_043/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_043.zarr",
+            "encodingFormat": "image/OME-Zarr",
+            "sameAs": "10000/TS_043/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_043.mrc"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "10000/TS_043/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_043.mrc",
+            "name": "10000/TS_043/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_043.mrc",
+            "description": "Tomogram 629 in MRC format",
+            "containedIn": {
+                "@id": "10000-tomograms-mrc"
+            },
+            "contentSize": "890881024.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_043/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_043.mrc",
+            "encodingFormat": "image/MRC",
+            "sameAs": "10000/TS_043/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_043.zarr"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "10000/TS_027/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_027.zarr",
+            "name": "10000/TS_027/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_027.zarr",
+            "description": "Tomogram 622 in OME-Zarr format",
+            "containedIn": {
+                "@id": "10000-tomograms-ome-zarr"
+            },
+            "contentSize": "823965835.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_027/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_027.zarr",
+            "encodingFormat": "image/OME-Zarr",
+            "sameAs": "10000/TS_027/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_027.mrc"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "10000/TS_027/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_027.mrc",
+            "name": "10000/TS_027/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_027.mrc",
+            "description": "Tomogram 622 in MRC format",
+            "containedIn": {
+                "@id": "10000-tomograms-mrc"
+            },
+            "contentSize": "1781761024.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_027/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_027.mrc",
+            "encodingFormat": "image/MRC",
+            "sameAs": "10000/TS_027/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_027.zarr"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "10000/TS_034/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_034.zarr",
+            "name": "10000/TS_034/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_034.zarr",
+            "description": "Tomogram 626 in OME-Zarr format",
+            "containedIn": {
+                "@id": "10000-tomograms-ome-zarr"
+            },
+            "contentSize": "815633474.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_034/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_034.zarr",
+            "encodingFormat": "image/OME-Zarr",
+            "sameAs": "10000/TS_034/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_034.mrc"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "10000/TS_034/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_034.mrc",
+            "name": "10000/TS_034/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_034.mrc",
+            "description": "Tomogram 626 in MRC format",
+            "containedIn": {
+                "@id": "10000-tomograms-mrc"
+            },
+            "contentSize": "890881024.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_034/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_034.mrc",
+            "encodingFormat": "image/MRC",
+            "sameAs": "10000/TS_034/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_034.zarr"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "10000/TS_029/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_029.zarr",
+            "name": "10000/TS_029/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_029.zarr",
+            "description": "Tomogram 624 in OME-Zarr format",
+            "containedIn": {
+                "@id": "10000-tomograms-ome-zarr"
+            },
+            "contentSize": "829691544.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_029/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_029.zarr",
+            "encodingFormat": "image/OME-Zarr",
+            "sameAs": "10000/TS_029/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_029.mrc"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "10000/TS_029/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_029.mrc",
+            "name": "10000/TS_029/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_029.mrc",
+            "description": "Tomogram 624 in MRC format",
+            "containedIn": {
+                "@id": "10000-tomograms-mrc"
+            },
+            "contentSize": "1781761024.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_029/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_029.mrc",
+            "encodingFormat": "image/MRC",
+            "sameAs": "10000/TS_029/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_029.zarr"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "10000/TS_037/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_037.zarr",
+            "name": "10000/TS_037/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_037.zarr",
+            "description": "Tomogram 627 in OME-Zarr format",
+            "containedIn": {
+                "@id": "10000-tomograms-ome-zarr"
+            },
+            "contentSize": "831623963.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_037/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_037.zarr",
+            "encodingFormat": "image/OME-Zarr",
+            "sameAs": "10000/TS_037/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_037.mrc"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "10000/TS_037/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_037.mrc",
+            "name": "10000/TS_037/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_037.mrc",
+            "description": "Tomogram 627 in MRC format",
+            "containedIn": {
+                "@id": "10000-tomograms-mrc"
+            },
+            "contentSize": "890881024.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_037/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_037.mrc",
+            "encodingFormat": "image/MRC",
+            "sameAs": "10000/TS_037/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_037.zarr"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "10000/TS_045/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_045.zarr",
+            "name": "10000/TS_045/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_045.zarr",
+            "description": "Tomogram 630 in OME-Zarr format",
+            "containedIn": {
+                "@id": "10000-tomograms-ome-zarr"
+            },
+            "contentSize": "824040946.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_045/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_045.zarr",
+            "encodingFormat": "image/OME-Zarr",
+            "sameAs": "10000/TS_045/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_045.mrc"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "10000/TS_045/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_045.mrc",
+            "name": "10000/TS_045/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_045.mrc",
+            "description": "Tomogram 630 in MRC format",
+            "containedIn": {
+                "@id": "10000-tomograms-mrc"
+            },
+            "contentSize": "890881024.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_045/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_045.mrc",
+            "encodingFormat": "image/MRC",
+            "sameAs": "10000/TS_045/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_045.zarr"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "249-249-ome-zarr",
+            "name": "s3://cryoet-data-portal-public/10000/TS_043/TiltSeries/100/TS_043.zarr",
+            "containedIn": {
+                "@id": "10000-tiltseries-ome-zarr"
+            },
+            "contentSize": "2661296655.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_043/TiltSeries/100/TS_043.zarr",
+            "encodingFormat": "image/OME-Zarr",
+            "sameAs": "s3://cryoet-data-portal-public/10000/TS_043/TiltSeries/100/TS_043.mrc"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "249-249-mrc",
+            "name": "s3://cryoet-data-portal-public/10000/TS_043/TiltSeries/100/TS_043.mrc",
+            "containedIn": {
+                "@id": "10000-tiltseries-mrc"
+            },
+            "contentSize": "2277009664.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_043/TiltSeries/100/TS_043.mrc",
+            "encodingFormat": "image/MRC",
+            "sameAs": "s3://cryoet-data-portal-public/10000/TS_043/TiltSeries/100/TS_043.zarr"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "242-242-ome-zarr",
+            "name": "s3://cryoet-data-portal-public/10000/TS_027/TiltSeries/100/TS_027.zarr",
+            "containedIn": {
+                "@id": "10000-tiltseries-ome-zarr"
+            },
+            "contentSize": "3225367217.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_027/TiltSeries/100/TS_027.zarr",
+            "encodingFormat": "image/OME-Zarr",
+            "sameAs": "s3://cryoet-data-portal-public/10000/TS_027/TiltSeries/100/TS_027.mrc"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "242-242-mrc",
+            "name": "s3://cryoet-data-portal-public/10000/TS_027/TiltSeries/100/TS_027.mrc",
+            "containedIn": {
+                "@id": "10000-tiltseries-mrc"
+            },
+            "contentSize": "2789336608.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_027/TiltSeries/100/TS_027.mrc",
+            "encodingFormat": "image/MRC",
+            "sameAs": "s3://cryoet-data-portal-public/10000/TS_027/TiltSeries/100/TS_027.zarr"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "245-245-ome-zarr",
+            "name": "s3://cryoet-data-portal-public/10000/TS_030/TiltSeries/100/TS_030.zarr",
+            "containedIn": {
+                "@id": "10000-tiltseries-ome-zarr"
+            },
+            "contentSize": "2611167401.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_030/TiltSeries/100/TS_030.zarr",
+            "encodingFormat": "image/OME-Zarr",
+            "sameAs": "s3://cryoet-data-portal-public/10000/TS_030/TiltSeries/100/TS_030.mrc"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "245-245-mrc",
+            "name": "s3://cryoet-data-portal-public/10000/TS_030/TiltSeries/100/TS_030.mrc",
+            "containedIn": {
+                "@id": "10000-tiltseries-mrc"
+            },
+            "contentSize": "2220084448.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_030/TiltSeries/100/TS_030.mrc",
+            "encodingFormat": "image/MRC",
+            "sameAs": "s3://cryoet-data-portal-public/10000/TS_030/TiltSeries/100/TS_030.zarr"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "243-243-ome-zarr",
+            "name": "s3://cryoet-data-portal-public/10000/TS_028/TiltSeries/100/TS_028.zarr",
+            "containedIn": {
+                "@id": "10000-tiltseries-ome-zarr"
+            },
+            "contentSize": "2060059019.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_028/TiltSeries/100/TS_028.zarr",
+            "encodingFormat": "image/OME-Zarr",
+            "sameAs": "s3://cryoet-data-portal-public/10000/TS_028/TiltSeries/100/TS_028.mrc"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "243-243-mrc",
+            "name": "s3://cryoet-data-portal-public/10000/TS_028/TiltSeries/100/TS_028.mrc",
+            "containedIn": {
+                "@id": "10000-tiltseries-mrc"
+            },
+            "contentSize": "1764682720.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_028/TiltSeries/100/TS_028.mrc",
+            "encodingFormat": "image/MRC",
+            "sameAs": "s3://cryoet-data-portal-public/10000/TS_028/TiltSeries/100/TS_028.zarr"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "241-241-ome-zarr",
+            "name": "s3://cryoet-data-portal-public/10000/TS_026/TiltSeries/100/TS_026.zarr",
+            "containedIn": {
+                "@id": "10000-tiltseries-ome-zarr"
+            },
+            "contentSize": "2711927001.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_026/TiltSeries/100/TS_026.zarr",
+            "encodingFormat": "image/OME-Zarr",
+            "sameAs": "s3://cryoet-data-portal-public/10000/TS_026/TiltSeries/100/TS_026.mrc"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "241-241-mrc",
+            "name": "s3://cryoet-data-portal-public/10000/TS_026/TiltSeries/100/TS_026.mrc",
+            "containedIn": {
+                "@id": "10000-tiltseries-mrc"
+            },
+            "contentSize": "2504710528.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_026/TiltSeries/100/TS_026.mrc",
+            "encodingFormat": "image/MRC",
+            "sameAs": "s3://cryoet-data-portal-public/10000/TS_026/TiltSeries/100/TS_026.zarr"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "244-244-ome-zarr",
+            "name": "s3://cryoet-data-portal-public/10000/TS_029/TiltSeries/100/TS_029.zarr",
+            "containedIn": {
+                "@id": "10000-tiltseries-ome-zarr"
+            },
+            "contentSize": "2859476450.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_029/TiltSeries/100/TS_029.zarr",
+            "encodingFormat": "image/OME-Zarr",
+            "sameAs": "s3://cryoet-data-portal-public/10000/TS_029/TiltSeries/100/TS_029.mrc"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "244-244-mrc",
+            "name": "s3://cryoet-data-portal-public/10000/TS_029/TiltSeries/100/TS_029.mrc",
+            "containedIn": {
+                "@id": "10000-tiltseries-mrc"
+            },
+            "contentSize": "2447785312.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_029/TiltSeries/100/TS_029.mrc",
+            "encodingFormat": "image/MRC",
+            "sameAs": "s3://cryoet-data-portal-public/10000/TS_029/TiltSeries/100/TS_029.zarr"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "247-247-ome-zarr",
+            "name": "s3://cryoet-data-portal-public/10000/TS_037/TiltSeries/100/TS_037.zarr",
+            "containedIn": {
+                "@id": "10000-tiltseries-ome-zarr"
+            },
+            "contentSize": "2300180136.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_037/TiltSeries/100/TS_037.zarr",
+            "encodingFormat": "image/OME-Zarr",
+            "sameAs": "s3://cryoet-data-portal-public/10000/TS_037/TiltSeries/100/TS_037.mrc"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "247-247-mrc",
+            "name": "s3://cryoet-data-portal-public/10000/TS_037/TiltSeries/100/TS_037.mrc",
+            "containedIn": {
+                "@id": "10000-tiltseries-mrc"
+            },
+            "contentSize": "1935458368.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_037/TiltSeries/100/TS_037.mrc",
+            "encodingFormat": "image/MRC",
+            "sameAs": "s3://cryoet-data-portal-public/10000/TS_037/TiltSeries/100/TS_037.zarr"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "246-246-ome-zarr",
+            "name": "s3://cryoet-data-portal-public/10000/TS_034/TiltSeries/100/TS_034.zarr",
+            "containedIn": {
+                "@id": "10000-tiltseries-ome-zarr"
+            },
+            "contentSize": "3219844366.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_034/TiltSeries/100/TS_034.zarr",
+            "encodingFormat": "image/OME-Zarr",
+            "sameAs": "s3://cryoet-data-portal-public/10000/TS_034/TiltSeries/100/TS_034.mrc"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "246-246-mrc",
+            "name": "s3://cryoet-data-portal-public/10000/TS_034/TiltSeries/100/TS_034.mrc",
+            "containedIn": {
+                "@id": "10000-tiltseries-mrc"
+            },
+            "contentSize": "2789336608.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_034/TiltSeries/100/TS_034.mrc",
+            "encodingFormat": "image/MRC",
+            "sameAs": "s3://cryoet-data-portal-public/10000/TS_034/TiltSeries/100/TS_034.zarr"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "248-248-ome-zarr",
+            "name": "s3://cryoet-data-portal-public/10000/TS_041/TiltSeries/100/TS_041.zarr",
+            "containedIn": {
+                "@id": "10000-tiltseries-ome-zarr"
+            },
+            "contentSize": "2384205930.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_041/TiltSeries/100/TS_041.zarr",
+            "encodingFormat": "image/OME-Zarr",
+            "sameAs": "s3://cryoet-data-portal-public/10000/TS_041/TiltSeries/100/TS_041.mrc"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "248-248-mrc",
+            "name": "s3://cryoet-data-portal-public/10000/TS_041/TiltSeries/100/TS_041.mrc",
+            "containedIn": {
+                "@id": "10000-tiltseries-mrc"
+            },
+            "contentSize": "2049308800.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_041/TiltSeries/100/TS_041.mrc",
+            "encodingFormat": "image/MRC",
+            "sameAs": "s3://cryoet-data-portal-public/10000/TS_041/TiltSeries/100/TS_041.zarr"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "250-250-ome-zarr",
+            "name": "s3://cryoet-data-portal-public/10000/TS_045/TiltSeries/100/TS_045.zarr",
+            "containedIn": {
+                "@id": "10000-tiltseries-ome-zarr"
+            },
+            "contentSize": "2024215572.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_045/TiltSeries/100/TS_045.zarr",
+            "encodingFormat": "image/OME-Zarr",
+            "sameAs": "s3://cryoet-data-portal-public/10000/TS_045/TiltSeries/100/TS_045.mrc"
+        },
+        {
+            "@type": "cr:FileObject",
+            "@id": "250-250-mrc",
+            "name": "s3://cryoet-data-portal-public/10000/TS_045/TiltSeries/100/TS_045.mrc",
+            "containedIn": {
+                "@id": "10000-tiltseries-mrc"
+            },
+            "contentSize": "1764682720.0",
+            "contentUrl": "https://files.cryoetdataportal.cziscience.com/10000/TS_045/TiltSeries/100/TS_045.mrc",
+            "encodingFormat": "image/MRC",
+            "sameAs": "s3://cryoet-data-portal-public/10000/TS_045/TiltSeries/100/TS_045.zarr"
+        },
+        {
+            "@type": "cr:FileSet",
+            "@id": "10000-tomograms-ome-zarr",
+            "name": "10000-tomograms-ome-zarr",
+            "description": "Tomograms in OME-Zarr format",
+            "encodingFormat": "image/OME-Zarr",
+            "includes": "https://files.cryoetdataportal.cziscience.com/10000/*/Reconstructions/VoxelSpacing*/Tomograms/*/*.zarr"
+        },
+        {
+            "@type": "cr:FileSet",
+            "@id": "10000-tomograms-mrc",
+            "name": "10000-tomograms-mrc",
+            "description": "Tomograms in MRC format",
+            "encodingFormat": "image/MRC",
+            "includes": "https://files.cryoetdataportal.cziscience.com/10000/*/Reconstructions/VoxelSpacing*/Tomograms/*/*.mrc"
+        },
+        {
+            "@type": "cr:FileSet",
+            "@id": "10000-tiltseries-ome-zarr",
+            "name": "10000-tiltseries-ome-zarr",
+            "description": "Tiltseries in OME-Zarr format",
+            "encodingFormat": "image/OME-Zarr",
+            "includes": "https://files.cryoetdataportal.cziscience.com/10000/*/Reconstructions/VoxelSpacing*/TiltSeries/*/*.zarr"
+        },
+        {
+            "@type": "cr:FileSet",
+            "@id": "10000-tiltseries-mrc",
+            "name": "10000-tiltseries-mrc",
+            "description": "Tiltseries in MRC format",
+            "encodingFormat": "image/MRC",
+            "includes": "https://files.cryoetdataportal.cziscience.com/10000/*/Reconstructions/VoxelSpacing*/TiltSeries/*/*.mrc"
+        }
+    ],
+    "recordSet": [
+        {
+            "@type": "cr:RecordSet",
+            "@id": "runs",
+            "name": "Runs",
+            "description": "Runs from cryoET data portal dataset 10000.",
+            "key": {
+                "@id": "runs/name"
+            },
+            "field": [
+                {
+                    "@type": "cr:Field",
+                    "@id": "runs/id",
+                    "description": "ID of the run on the cryoET data portal",
+                    "dataType": "sc:Integer"
+                },
+                {
+                    "@type": "cr:Field",
+                    "@id": "runs/name",
+                    "description": "Name of the run on the cryoET data portal",
+                    "dataType": "sc:Text"
+                }
+            ],
+            "data": [
+                {
+                    "runs/id": 249,
+                    "runs/name": "10000/TS_043"
+                },
+                {
+                    "runs/id": 241,
+                    "runs/name": "10000/TS_026"
+                },
+                {
+                    "runs/id": 242,
+                    "runs/name": "10000/TS_027"
+                },
+                {
+                    "runs/id": 243,
+                    "runs/name": "10000/TS_028"
+                },
+                {
+                    "runs/id": 244,
+                    "runs/name": "10000/TS_029"
+                },
+                {
+                    "runs/id": 245,
+                    "runs/name": "10000/TS_030"
+                },
+                {
+                    "runs/id": 246,
+                    "runs/name": "10000/TS_034"
+                },
+                {
+                    "runs/id": 247,
+                    "runs/name": "10000/TS_037"
+                },
+                {
+                    "runs/id": 248,
+                    "runs/name": "10000/TS_041"
+                },
+                {
+                    "runs/id": 250,
+                    "runs/name": "10000/TS_045"
+                }
+            ]
+        },
+        {
+            "@type": "cr:RecordSet",
+            "@id": "tomograms",
+            "name": "Tomograms",
+            "description": "Tomograms from cryoET data portal dataset 10000.",
+            "field": [
+                {
+                    "@type": "cr:Field",
+                    "@id": "tomograms/run_name",
+                    "description": "ID of the run this tomogram belongs to.",
+                    "dataType": "sc:Integer",
+                    "references": {
+                        "@id": "runs/id"
+                    },
+                    "source": {
+                        "fileSet": {
+                            "@id": "10000-tomograms-mrc"
+                        },
+                        "extract": {
+                            "fileProperty": "fullpath"
+                        },
+                        "transform": {
+                            "regex": "(.*)/Reconstructions/VoxelSpacing.*/Tomograms/.*.mrc"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

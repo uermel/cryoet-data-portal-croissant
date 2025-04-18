@@ -14,6 +14,7 @@ dependencies = [
     "mlcroissant",
     "cryoet-data-portal",
     "click",
+    "pydantic>2",
 ]
 
 authors = [
@@ -28,6 +29,9 @@ keywords = ["cryoet", "cryo-et", "croissant", "annotation", "segmentation", "mlc
 [project.urls]
 Repository = "https://github.com/uermel/cryoet-data-portal-croissant.git"
 Issues = "https://github.com/uermel/cryoet-data-portal-croissant/issues"
+
+[project.scripts]
+cryossant = "cryoet_data_portal_croissant.cli:cli"
 
 [project.optional-dependencies]
 test = [

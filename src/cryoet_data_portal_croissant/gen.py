@@ -1,104 +1,37 @@
-import mlcroissant as mlc
+from concurrent.futures import ProcessPoolExecutor, as_completed
+
 import cryoet_data_portal as cdp
-from typing import List, Union, Dict, Any
+
+from cryoet_data_portal_croissant._generators._dataset import _generate_mlcroissant_dataset
 
 
-def tomo_to_fileobject(
-    tomo: cdp.Tomogram,
-) -> List[mlc.FileObject]:
+def generate_mlcroissant(
+    dataset_ids: list[int] | None = None,
+):
     """
-    Convert a cryoet_data_portal tomogram to a mlcroissant FileObject.
+    Generate a mlcroissant structure graph for the given dataset IDs.
 
     Args:
-        tomo: The tomogram to convert.
+        dataset_ids: A list of dataset IDs to generate the structure graph for. If None, all datasets are used.
 
     Returns:
-        mlc.FileObject: The converted FileObjects (one each for Zarr and MRC).
-    """
-    zarr_obj = mlc.FileObject(
-        id = tomo.s3_omezarr_dir,
-        name = tomo.s3_omezarr_dir,
-        content_url = tomo.https_omezarr_dir,
-        content_size=str(tomo.file_size_omezarr),
-        encoding_formats=["image/OME-Zarr"],
-        same_as=[tomo.s3_mrc_file],
-    )
-
-    mrc_obj = mlc.FileObject(
-        id = tomo.s3_mrc_file,
-        name = tomo.s3_mrc_file,
-        content_url = tomo.https_mrc_file,
-        content_size=str(tomo.file_size_mrc),
-        encoding_formats=["image/MRC"],
-        same_as=[tomo.s3_omezarr_dir],
-    )
-
-    return [zarr_obj, mrc_obj]
-
-def tiltseries_to_fileobject(
-    tiltseries: cdp.TiltSeries,
-) -> List[mlc.FileObject]:
-    """
-    Convert a cryoet_data_portal tiltseries to a mlcroissant FileObject.
-
-    Args:
-        tiltseries: The tiltseries to convert.
-
-    Returns:
-        mlc.FileObject: The converted FileObjects (one each for Zarr and MRC).
-    """
-    zarr_obj = mlc.FileObject(
-        id = tiltseries.s3_omezarr_dir,
-        name = tiltseries.s3_omezarr_dir,
-        content_url = tiltseries.https_omezarr_dir,
-        content_size=str(tiltseries.file_size_omezarr),
-        encoding_formats=["image/OME-Zarr"],
-        same_as=[tiltseries.s3_mrc_file],
-    )
-
-    mrc_obj = mlc.FileObject(
-        id = tiltseries.s3_mrc_file,
-        name = tiltseries.s3_mrc_file,
-        content_url = tiltseries.https_mrc_file,
-        content_size=str(tiltseries.file_size_mrc),
-        encoding_formats=["image/MRC"],
-        same_as=[tiltseries.s3_omezarr_dir],
-    )
-
-    return [zarr_obj, mrc_obj]
-
-
-def segmentation_to_fileobject(
-    segmentation: cdp.AnnotationFile,
-) -> List[mlc.FileObject]:
-    """
-    Convert a cryoet_data_portal segmentation to a mlcroissant FileObject.
-
-    Args:
-        segmentation: The segmentation to convert.
-
-    Returns:
-        mlc.FileObject: The converted FileObjects (one each for Zarr and MRC).
+        mlcroissant.StructureGraph: The generated mlcroissant structure graph.
     """
 
+    # Get the datasets from cryoet_data_portal
+    if dataset_ids is None:
+        client = cdp.Client()
+        datasets = cdp.Dataset.find(client, [])
+        dataset_ids = [dataset.id for dataset in datasets]
 
+    # Create a ProcessPoolExecutor to parallelize the processing of datasets
+    ret = []
+    with ProcessPoolExecutor() as executor:
+        futures = [executor.submit(_generate_mlcroissant_dataset, dsid) for dsid in dataset_ids]
 
-    zarr_obj = mlc.FileObject(
-        id = segmentation.s3_omezarr_dir,
-        name = segmentation.s3_omezarr_dir,
-        content_url = segmentation.https_omezarr_dir,
-        content_size=str(segmentation.file_size_omezarr),
-        encoding_formats=["image/OME-Zarr"],
-        same_as=[segmentation.s3_mrc_file],
-    )
+        for fut in as_completed(futures):
+            ds = fut.result()
+            print(ds.issues.report())
+            ret.append(ds)
 
-    mrc_obj = mlc.FileObject(
-        id = segmentation.s3_mrc_file,
-        name = segmentation.s3_mrc_file,
-        content_url = segmentation.https_mrc_file,
-        content_size=str(segmentation.file_size_mrc),
-        encoding_formats=["image/MRC"],
-        same_as=[segmentation.s3_omezarr_dir],
-    )
-
-    return [zarr_obj, mrc_obj]
+    return ret
