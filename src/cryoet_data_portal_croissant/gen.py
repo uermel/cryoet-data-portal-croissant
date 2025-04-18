@@ -7,6 +7,8 @@ from cryoet_data_portal_croissant._generators._dataset import _generate_mlcroiss
 
 def generate_mlcroissant(
     dataset_ids: list[int] | None = None,
+    out_dir: str = "testdata",
+    data_url: str = "http://[::]:8000",
 ):
     """
     Generate a mlcroissant structure graph for the given dataset IDs.
@@ -27,11 +29,37 @@ def generate_mlcroissant(
     # Create a ProcessPoolExecutor to parallelize the processing of datasets
     ret = []
     with ProcessPoolExecutor() as executor:
-        futures = [executor.submit(_generate_mlcroissant_dataset, dsid) for dsid in dataset_ids]
+        futures = [executor.submit(_generate_mlcroissant_dataset, dsid, out_dir, data_url) for dsid in dataset_ids]
 
         for fut in as_completed(futures):
             ds = fut.result()
-            print(ds.issues.report())
+            # print(ds.issues.report())
             ret.append(ds)
 
+    # for dsid in dataset_ids:
+    #     ds = _generate_mlcroissant_dataset(dsid, out_dir, data_url)
+    #     # print(ds.issues.report())
+    #     ret.append(ds)
+
     return ret
+
+
+if __name__ == "__main__":
+    import json
+    import shutil
+
+    import mlcroissant as mlc
+
+    shutil.rmtree("/Users/utz.ermel/.cache/croissant", ignore_errors=True)
+
+    metadata = generate_mlcroissant([10000])
+
+    with open("test.json", "w") as f:
+        f.write(json.dumps(metadata[0].to_json(), indent=4, default=str) + "\n")
+
+    dataset = mlc.Dataset.from_metadata(metadata[0])
+    dataset.debug = True
+    records = dataset.records(record_set="tomogram_segmentation")
+
+    for record in records:
+        print(record)

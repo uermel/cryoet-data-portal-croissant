@@ -1,12 +1,11 @@
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, time
 
 import cryoet_data_portal as cdp
 import mlcroissant as mlc
 from mlcroissant import FileObject
 
-from cryoet_data_portal_croissant._generators._tiltseries import _tiltseries_filesets, _tiltseries_to_fileobject
-from cryoet_data_portal_croissant._generators._tomogram import _tomo_filesets, _tomo_to_fileobject, _tomo_recordset
+from cryoet_data_portal_croissant._generators._create_joins import _joins
+from cryoet_data_portal_croissant._generators._dump_portal import _dump_portal
 
 
 def _author_to_person(
@@ -79,37 +78,33 @@ def _dataset_metadata(
     return metadata
 
 
-def _generate_mlcroissant_dataset(
-    dataset_id: int,
-) -> mlc.Metadata:
+def _generate_mlcroissant_dataset(dataset_id: int, out_dir: str, data_url: str) -> mlc.Metadata:
+    """
+    Generate a mlcroissant dataset from a cryoet_data_portal dataset.
+
+    Args:
+        dataset_id: The cryoet_data_portal dataset ID.
+        out_dir: The output directory to save the JSON files.
+
+    Returns:
+        mlc.Metadata: The generated metadata.
+    """
 
     client = cdp.Client()
     dataset = cdp.Dataset.get_by_id(client, dataset_id)
 
-    # Generate file objects and filesets
-    tomograms = cdp.Tomogram.find(client, [cdp.Tomogram.run.dataset_id == dataset_id])
-    tiltseries = cdp.TiltSeries.find(client, [cdp.TiltSeries.run.dataset_id == dataset_id])
+    # Dump the portal metadata to croissant
+    distribution, recordsets = _dump_portal(dataset_id, out_dir, data_url)
 
-    with ThreadPoolExecutor() as executor:
-        tomogram_futures = [executor.submit(_tomo_to_fileobject, dataset, tomo) for tomo in tomograms]
-        tiltseries_futures = [executor.submit(_tiltseries_to_fileobject, dataset, ts) for ts in tiltseries]
+    # Create useful joins
+    joins = _joins()
 
-        tomogram_objects = []
-        for future in as_completed(tomogram_futures):
-            tomogram_objects.extend(future.result())
-
-        tiltseries_objects = []
-        for future in as_completed(tiltseries_futures):
-            tiltseries_objects.extend(future.result())
-
-    tomogram_sets = _tomo_filesets(dataset)
-    tiltseries_sets = _tiltseries_filesets(dataset)
-
-    distribution = tomogram_objects + tiltseries_objects + tomogram_sets + tiltseries_sets
-
-    recordsets = _tomo_recordset(dataset, dataset.runs)
+    # Add the joins to the recordsets
+    # recordsets.extend(joins)
 
     # Create the dataset metadata
     metadata = _dataset_metadata(dataset, distribution, recordsets)
+
+    # print(json.dumps(metadata.to_json(), indent=4))
 
     return metadata
