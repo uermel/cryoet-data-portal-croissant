@@ -4,11 +4,10 @@ import cryoet_data_portal as cdp
 import mlcroissant as mlc
 from mlcroissant import FileObject
 
-from cryoet_data_portal_croissant._generators._create_joins import _joins
-from cryoet_data_portal_croissant._generators._dump_portal import _dump_portal
+from cryoet_data_portal_croissant.generators.dump_tables import dump_portal
 
 
-def _author_to_person(
+def author_to_person(
     dataset: cdp.Dataset,
 ) -> list[mlc.Person]:
     """
@@ -32,8 +31,8 @@ def _author_to_person(
     return persons
 
 
-def _dataset_metadata(
-    dataset: cdp.Dataset,
+def dataset_metadata(
+    dataset_id: int,
     distribution: list[FileObject | mlc.FileSet],
     recordsets: list[mlc.RecordSet],
 ) -> mlc.Metadata:
@@ -41,17 +40,21 @@ def _dataset_metadata(
     Create metadata for a cryoet_data_portal dataset.
 
     Args:
-        dataset: The cryoet_data_portal dataset.
+        dataset_id: The cryoet_data_portal dataset ID.
         distribution: The distribution of the dataset (file objects and filesets).
 
     Returns:
         mlc.Metadata: The generated metadata.
     """
+    # Get the dataset from cryoet_data_portal
+    client = cdp.Client()
+    dataset = cdp.Dataset.get_by_id(client, dataset_id)
 
+    # Create the distribution
     metadata = mlc.Metadata(
         name=dataset.title,
         description=dataset.description,
-        creators=_author_to_person(dataset),
+        creators=author_to_person(dataset),
         date_created=datetime.combine(dataset.deposition_date, time.min),
         date_modified=datetime.combine(dataset.last_modified_date, time.min),
         date_published=datetime.combine(dataset.release_date, time.min),
@@ -78,32 +81,31 @@ def _dataset_metadata(
     return metadata
 
 
-def _generate_mlcroissant_dataset(dataset_id: int, out_dir: str, data_url: str) -> mlc.Metadata:
+def generate_mlcroissant_dataset(dataset_id: int, out_dir: str, data_url: str) -> mlc.Metadata:
     """
     Generate a mlcroissant dataset from a cryoet_data_portal dataset.
 
     Args:
         dataset_id: The cryoet_data_portal dataset ID.
         out_dir: The output directory to save the JSON files.
+        data_url: The URL to the data.
 
     Returns:
         mlc.Metadata: The generated metadata.
     """
 
-    client = cdp.Client()
-    dataset = cdp.Dataset.get_by_id(client, dataset_id)
-
     # Dump the portal metadata to croissant
-    distribution, recordsets = _dump_portal(dataset_id, out_dir, data_url)
+    distribution, recordsets = dump_portal(dataset_id, out_dir, data_url)
 
     # Create useful joins
-    joins = _joins()
+    # joins = create_joins()
 
     # Add the joins to the recordsets
     # recordsets.extend(joins)
 
     # Create the dataset metadata
-    metadata = _dataset_metadata(dataset, distribution, recordsets)
+
+    metadata = dataset_metadata(dataset_id, distribution, recordsets)
 
     # print(json.dumps(metadata.to_json(), indent=4))
 

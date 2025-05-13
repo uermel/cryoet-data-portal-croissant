@@ -2,7 +2,7 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 
 import cryoet_data_portal as cdp
 
-from cryoet_data_portal_croissant._generators._dataset import _generate_mlcroissant_dataset
+from cryoet_data_portal_croissant.generators.dataset import generate_mlcroissant_dataset
 
 
 def generate_mlcroissant(
@@ -28,18 +28,18 @@ def generate_mlcroissant(
 
     # Create a ProcessPoolExecutor to parallelize the processing of datasets
     ret = []
-    with ProcessPoolExecutor() as executor:
-        futures = [executor.submit(_generate_mlcroissant_dataset, dsid, out_dir, data_url) for dsid in dataset_ids]
+    # with ProcessPoolExecutor() as executor:
+    #     futures = [executor.submit(generate_mlcroissant_dataset, dsid, out_dir, data_url) for dsid in dataset_ids]
+    #
+    #     for fut in as_completed(futures):
+    #         ds = fut.result()
+    #         # print(ds.issues.report())
+    #         ret.append(ds)
 
-        for fut in as_completed(futures):
-            ds = fut.result()
-            # print(ds.issues.report())
-            ret.append(ds)
-
-    # for dsid in dataset_ids:
-    #     ds = _generate_mlcroissant_dataset(dsid, out_dir, data_url)
-    #     # print(ds.issues.report())
-    #     ret.append(ds)
+    for dsid in dataset_ids:
+        ds = generate_mlcroissant_dataset(dsid, out_dir, data_url)
+        # print(ds.issues.report())
+        ret.append(ds)
 
     return ret
 
@@ -52,14 +52,16 @@ if __name__ == "__main__":
 
     shutil.rmtree("/Users/utz.ermel/.cache/croissant", ignore_errors=True)
 
-    metadata = generate_mlcroissant([10000])
+    metadata = generate_mlcroissant(
+        [10440], out_dir="/Users/utz.ermel/Documents/repos/cryoet-data-portal-croissant/.notebook/testdata"
+    )
 
-    with open("test.json", "w") as f:
+    with open("/Users/utz.ermel/Documents/repos/cryoet-data-portal-croissant/.notebook/test.json", "w") as f:
         f.write(json.dumps(metadata[0].to_json(), indent=4, default=str) + "\n")
 
     dataset = mlc.Dataset.from_metadata(metadata[0])
     dataset.debug = True
-    records = dataset.records(record_set="tomogram_segmentation")
+    records = dataset.records(record_set="tomogram_type")
 
     for record in records:
         print(record)
