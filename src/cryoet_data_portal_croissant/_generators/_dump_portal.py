@@ -17,6 +17,12 @@ _PORTAL_TYPES = (
     | Type[cdp.Alignment]
 )
 
+_PORTAL_TYPES_NAMES = (
+    pt._gql_type.lower() for pt in (
+        cdp.Annotation, cdp.AnnotationShape, cdp.AnnotationFile, cdp.Tomogram, cdp.TiltSeries, cdp.Dataset, cdp.Run, cdp.Alignment
+    )
+)
+
 _TYPE_MAP = {
     "str": mlc.DataType.TEXT,
     "int": mlc.DataType.INTEGER,
@@ -60,7 +66,7 @@ def _portal_to_recordset(clz: _PORTAL_TYPES) -> mlc.RecordSet:
             if typ == "str" and ("http" in name or "s3" in name):
                 data_type = mlc.DataType.URL
 
-            if "id" in name and name != "id":
+            if ("id" in name and any(pt in name for pt in _PORTAL_TYPES_NAMES)) and name != "id":
                 fld = mlc.Field(
                     id=f"{clz_name}_{name}",
                     name=name,
